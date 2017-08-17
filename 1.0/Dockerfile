@@ -3,19 +3,29 @@ MAINTAINER Rance Hall rance_hall@icloud.com
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV SYMPA_RELEASE 6.2.16
-ENV S6_RELEASE v1.19.1.1/s6-overlay-amd64.tar.gz
+ENV S6_RELEASE v1.20.0.0/s6-overlay-amd64.tar.gz
 
 #Add S6 Overlay (Build via Docker 1.12)
+#ADD https://github.com/just-containers/s6-overlay/releases/download/$S6_RELEASE /tmp/
+#RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C / --exclude="./bin" \
+# && tar xzf /tmp/s6-overlay-amd64.tar.gz -C /usr ./bin
+
+#Add S6 Overlay (Build via Docker CE 17)
 ADD https://github.com/just-containers/s6-overlay/releases/download/$S6_RELEASE /tmp/
-RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C / --exclude="./bin" \
- && tar xzf /tmp/s6-overlay-amd64.tar.gz -C /usr ./bin
+RUN mv /tmp/bin/* /usr/bin/ \
+ && mv /tmp/etc/* /etc/ \
+ && mv /tmp/init / \
+ && mv /tmp/libexec/ / \
+ && rm -v /tmp/usr/bin/execlineb \
+ && mv /tmp/usr/bin/* /usr/bin/ \
+ && rm -rfv /tmp/*
+
 
 #Install Sympa required packages
 RUN apt-get update \
  && apt-get install nginx -y \
  && apt-get install perl -y \
- && apt-get install postfix -y \
- && apt-get install wget -y
+ && apt-get install postfix -y
 
 #Install Sympa
 
@@ -32,8 +42,6 @@ RUN mkdir -p /etc/services.d/nginx/ \
 
 #Add Service POSTFIX to be Monitored by S6
 RUN mkdir -p /etc/services.d/postfix/ \
- && touch /etc/services.d/postfix/run \
- && echo '#!/usr/bin/execlineb -P' > /etc/services.d/postfix/run \
- && echo 'postfix' >> /etc/services.d/postfix/run
+ && COPY ["postfix.run", "run", "/etc/services.d/postfix"]
 
 ENTRYPOINT ["/init"]
