@@ -23,11 +23,23 @@ RUN mv /tmp/bin/* /usr/bin/ \
 
 #Install Sympa required packages
 RUN apt-get update \
+ && apt-get install apt-utils -y \
+ && apt-get install less -y \
+ && apt-get install nano -y \
  && apt-get install nginx -y \
  && apt-get install perl -y \
- && apt-get install postfix -y
+ && apt-get install postfix -y \
+ && apt-get install build-essential -y \
+ && apt-get install libglib2.0-data shared-mime-info libio-socket-ip-perl libio-socket-inet6-perl krb5-locales libmime-types-perl libsasl2-modules libhtml-form-perl libhttp-daemon-perl libxml-sax-expat-perl xml-core libfile-nfslock-perl libsoap-lite-perl libcrypt-ciphersaber-perl libmail-dkim-perl -y
 
 #Install Sympa
+ADD http://www.sympa.org/distribution/sympa-$SYMPA_RELEASE.tar.gz /tmp/
+
+#Create sympa user
+RUN groupadd -r sympa && useradd -g sympa -m -r -s /bin/bash sympa
+
+#Configure, make, and make install sympa
+RUN cd /tmp/sympa-$SYMPA_RELEASE && ./configure && make && make install
 
 #Configure web server
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
@@ -41,7 +53,7 @@ RUN mkdir -p /etc/services.d/nginx/ \
  && echo 'nginx' >> /etc/services.d/nginx/run
 
 #Add Service POSTFIX to be Monitored by S6
-RUN mkdir -p /etc/services.d/postfix/ \
- && COPY ["postfix.run", "run", "/etc/services.d/postfix"]
+RUN mkdir -p /etc/services.d/postfix/
+COPY postfix.run /etc/services.d/postfix/run
 
 ENTRYPOINT ["/init"]
