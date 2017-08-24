@@ -1,0 +1,89 @@
+[sympa-ja.org]
+name=RHEL$releasever - Sympa - stable
+baseurl=http://Sympa-JA.org/download/rhel/$releasever/stable/$basearch/
+gpgcheck=1
+gpgkey=http://Sympa-JA.org/download/RPM-GPG-KEY-sympa-ja_org
+
+[sympa-ja.org-snapshot]
+name=RHEL$releasever - Sympa - development snapshot
+baseurl=http://Sympa-JA.org/download/rhel/$releasever/snapshot/$basearch/
+gpgcheck=1
+gpgkey=http://Sympa-JA.org/download/RPM-GPG-KEY-sympa-ja_org
+enabled=0
+
+[sympa-ja.org-7.1]
+name=RHEL$releasever - Sympa - 7.1
+baseurl=http://Sympa-JA.org/download/rhel/$releasever/7.1/$basearch/
+gpgcheck=1
+gpgkey=http://Sympa-JA.org/download/RPM-GPG-KEY-sympa-ja_org
+enabled=0
+
+[sympa-ja.org-7.0]
+name=RHEL$releasever - Sympa - 7.0
+baseurl=http://Sympa-JA.org/download/rhel/$releasever/7.0/$basearch/
+gpgcheck=1
+gpgkey=http://Sympa-JA.org/download/RPM-GPG-KEY-sympa-ja_org
+enabled=0
+
+[sympa-ja.org-6.2]
+name=RHEL$releasever - Sympa - 6.2
+baseurl=http://Sympa-JA.org/download/rhel/$releasever/6.2/$basearch/
+gpgcheck=1
+gpgkey=http://Sympa-JA.org/download/RPM-GPG-KEY-sympa-ja_org
+enabled=0
+
+[sympa-ja.org-6.1]
+name=RHEL$releasever - Sympa - 6.1
+baseurl=http://Sympa-JA.org/download/rhel/$releasever/6.1/$basearch/
+gpgcheck=1
+gpgkey=http://Sympa-JA.org/download/RPM-GPG-KEY-sympa-ja_org
+enabled=0
+
+[sympa-ja.org-source]
+name=RHEL$releasever - Sympa - stable source
+baseurl=http://Sympa-JA.org/download/rhel/$releasever/stable/SRPMS/
+gpgcheck=1
+gpgkey=http://Sympa-JA.org/download/RPM-GPG-KEY-sympa-ja_org
+
+[sympa-ja.org-snapshot-source]
+name=RHEL$releasever - Sympa - development snapshot source
+baseurl=http://Sympa-JA.org/download/rhel/$releasever/snapshot/SRPMS/
+gpgcheck=1
+gpgkey=http://Sympa-JA.org/download/RPM-GPG-KEY-sympa-ja_org
+enabled=0
+
+[sympa-ja.org-7.1-source]
+name=RHEL$releasever - Sympa - 7.1 source
+baseurl=http://Sympa-JA.org/download/rhel/$releasever/7.1/SRPMS/
+gpgcheck=1
+gpgkey=http://Sympa-JA.org/download/RPM-GPG-KEY-sympa-ja_org
+enabled=0
+
+[sympa-ja.org-7.0-source]
+name=RHEL$releasever - Sympa - 7.0 source
+baseurl=http://Sympa-JA.org/download/rhel/$releasever/7.0/SRPMS/
+gpgcheck=1
+gpgkey=http://Sympa-JA.org/download/RPM-GPG-KEY-sympa-ja_org
+enabled=0
+
+[sympa-ja.org-6.2-source]
+name=RHEL$releasever - Sympa - 6.2 source
+baseurl=http://Sympa-JA.org/download/rhel/$releasever/6.2/SRPMS/
+gpgcheck=1
+gpgkey=http://Sympa-JA.org/download/RPM-GPG-KEY-sympa-ja_org
+enabled=0
+
+[sympa-ja.org-6.1-source]
+name=RHEL$releasever - Sympa - 6.1 source
+baseurl=http://Sympa-JA.org/download/rhel/$releasever/6.1/SRPMS/
+gpgcheck=1
+gpgkey=http://Sympa-JA.org/download/RPM-GPG-KEY-sympa-ja_org
+enabled=0
+
+[sympa-ja.org-compl-source]
+name=RHEL$releasever - Sympa - complementary source
+baseurl=http://Sympa-JA.org/download/rhel/$releasever/compl/SRPMS/
+gpgcheck=1
+gpgkey=http://Sympa-JA.org/download/RPM-GPG-KEY-sympa-ja_org
+enabled=1
+
