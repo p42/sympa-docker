@@ -20,4 +20,6 @@ RUN yum -y update  \
  && yum -y install postfix \
  && yum -y clean all
 
+RUN ln -s /usr/bin/perl /bin/perl
+
 ENTRYPOINT ["/init"]
