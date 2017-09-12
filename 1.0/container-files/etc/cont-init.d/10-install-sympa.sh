@@ -48,9 +48,9 @@ fi
 # run data migration
 
 # look for the breadcrumb file placed by the
-if [ ! -f /do_not_remove ]; then
+#if [ ! -f /do_not_remove ]; then
 
 	#Create a breadcrumb file
-	echo "Presence of this file will prevent execution of the recover portion of the init script in case the container is recreated." > /do_not_remove
+	#echo "Presence of this file will prevent execution of the recover portion of the init script in case the container is recreated." > /do_not_remove
 
-fi
+#fi
