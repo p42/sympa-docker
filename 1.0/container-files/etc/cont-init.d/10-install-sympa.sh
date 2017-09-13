@@ -5,7 +5,7 @@ set -e
 #Apply environment variables to config files where needed.
 
 # SYMPA_DOMAIN
-if [[ "$SYMPA_DOMAIN" !== "lists.mydomain.com" ]]; then
+if [ "$SYMPA_DOMAIN" != "lists.mydomain.com" ]; then
 	sed -e "s/SYMPA_DOMAIN/$SYMPA_DOMAIN/g" /etc/nginx/conf.d/sympa.conf > /etc/nginx/conf.d/sympa.conf.new
   sed -e "s/SYMPA_DOMAIN/$SYMPA_DOMAIN/g" /etc/sympa/sympa.conf > /etc/sympa/sympa.conf.new
 	mv /etc/nginx/conf.d/sympa.conf.new /etc/nginx/conf.d/sympa.conf
@@ -38,7 +38,7 @@ mv /etc/sympa/sympa.conf.new /etc/sympa/sympa.conf
 
 # apply relayhost to postfix config if requested.
 
-if [[ "SYMPA_POSTFIX_RELAY" !== "mail.mydomain.com" ]]; then
+if [ "SYMPA_POSTFIX_RELAY" != "mail.mydomain.com" ]; then
 	sed -e "s/#relayhost = SYMPA_POSTFIX_RELAY/relayhost = $SYMPA_POSTFIX_RELAY/g" /etc/postfix/main.cf > /etc/postfix/main.cf.new
 	mv /etc/postfix/main.cf.new /etc/postfix/main.cf
 fi
