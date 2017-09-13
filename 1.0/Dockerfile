@@ -18,6 +18,7 @@ RUN yum -y update  \
  && yum -y install sympa \
  && yum -y install sympa-nginx \
  && yum -y install postfix \
+ && yum -y install rsyslog \
  && yum -y clean all
 
 RUN ln -s /usr/bin/perl /bin/perl
