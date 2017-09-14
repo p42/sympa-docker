@@ -9,6 +9,7 @@ ENV SYMPA_DB_PASS=sympa
 ENV SYMPA_DB_NAME=sympa
 ENV SYMPA_LISTMASTERS=myadmin@mydomain.com
 ENV SYMPA_POSTFIX_RELAY=mail.mydomain.com
+ENV SYMPA_REMOTE_LOG_SERVER=logger.mydomain.com
 
 COPY container-files /
 
