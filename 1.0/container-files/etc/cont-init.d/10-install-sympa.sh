@@ -50,6 +50,10 @@ fi
 
 # Configuration complete
 
+# run health check
+
+/usr/sbin/sympa.pl --health_check
+
 # run data migration
 
 # look for the breadcrumb file placed by the
