@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-postfix -D
+/usr/libexec/postfix/master -c /etc/postfix -d
