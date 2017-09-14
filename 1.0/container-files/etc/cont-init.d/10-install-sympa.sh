@@ -38,9 +38,14 @@ mv /etc/sympa/sympa.conf.new /etc/sympa/sympa.conf
 
 # apply relayhost to postfix config if requested.
 
-if [ "SYMPA_POSTFIX_RELAY" != "mail.mydomain.com" ]; then
+if [ "$SYMPA_POSTFIX_RELAY" != "mail.mydomain.com" ]; then
 	sed -e "s/#relayhost = SYMPA_POSTFIX_RELAY/relayhost = $SYMPA_POSTFIX_RELAY/g" /etc/postfix/main.cf > /etc/postfix/main.cf.new
 	mv /etc/postfix/main.cf.new /etc/postfix/main.cf
+fi
+
+if [ "$SYMPA_REMOTE_LOG_SERVER" != "logger.mydomain.com" ]; then
+	sed -e "s/#*.* @@remote-host:514/*.* @@$SYMPA_REMOTE_LOG_SERVER/g" /etc/rsyslog.conf > /etc/rsyslog.conf.new
+	mv /etc/rsyslog.conf.new /etc/rsyslog.conf
 fi
 
 # Configuration complete
