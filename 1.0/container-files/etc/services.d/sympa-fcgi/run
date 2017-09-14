@@ -1,0 +1,5 @@
+#!/bin/execlineb -P
+/usr/bin/spawn-fcgi -n -F 5 \
+-P /var/run/sympa/wwsympa.pid \
+-u sympa -g sympa -s /var/run/sympa/wwsympa.socket \
+-M 0600 -U nginx -- /usr/libexec/sympa/wwsympa.fcgi 
