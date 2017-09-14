@@ -14,7 +14,7 @@ ENV SYMPA_REMOTE_LOG_SERVER=logger.mydomain.com
 COPY container-files /
 
 RUN yum -y update  \
- && yum -y install less nano \
+ && yum -y install less nano which \
  && yum -y install epel-release \
  && yum -y install sympa \
  && yum -y install sympa-nginx \
