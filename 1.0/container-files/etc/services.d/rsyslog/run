@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-/usr/sbin/rsyslogd -dn
+/usr/sbin/rsyslogd -n
