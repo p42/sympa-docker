@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-/usr/sbin/task_manager.pl
+/usr/sbin/task_manager.pl --foreground

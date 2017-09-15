@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-/usr/sbin/archived.pl
+/usr/sbin/archived.pl --foreground

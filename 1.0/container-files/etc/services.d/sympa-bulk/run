@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-/usr/sbin/bulk.pl
+/usr/sbin/bulk.pl --foreground
