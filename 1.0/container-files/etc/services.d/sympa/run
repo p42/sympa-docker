@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-/usr/sbin/presympa && /usr/sbin/sympa_msg.pl --foreground
+foreground { /usr/sbin/presympa } /usr/sbin/sympa_msg.pl --foreground
