@@ -49,13 +49,3 @@ if [ "$SYMPA_REMOTE_LOG_SERVER" != "logger.mydomain.com" ]; then
 fi
 
 # Configuration complete
-
-# run data migration
-
-# look for the breadcrumb file placed by the
-#if [ ! -f /do_not_remove ]; then
-
-	#Create a breadcrumb file
-	#echo "Presence of this file will prevent execution of the recover portion of the init script in case the container is recreated." > /do_not_remove
-
-#fi
