@@ -48,6 +48,6 @@ if [ "$SYMPA_REMOTE_LOG_SERVER" != "logger.mydomain.com" ]; then
 	mv /etc/rsyslog.conf.new /etc/rsyslog.conf
 fi
 
-chmod +x /usr/sbin/presympa.#!/bin/sh
+chmod +x /usr/sbin/presympa
 
 # Configuration complete
