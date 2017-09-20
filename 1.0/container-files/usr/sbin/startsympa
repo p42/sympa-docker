@@ -1,14 +1,13 @@
 #!/bin/sh
 
-/bin/s6-svscan /etc/services.d
-/bin/s6-svc -u rsyslog
-/bin/s6-svwait -u rsyslog
-/bin/s6-svc -u nginx
-/bin/s6-svc -u postfix
-/bin/s6-svc -u sympa-msg
-/bin/s6-svwait -u sympa-msg
-/bin/s6-svc -u sympa-archive
-/bin/s6-svc -u sympa-bounce
-/bin/s6-svc -u sympa-bulk
-/bin/s6-svc -u sympa-task
-/bin/s6-svc -u sympa-fcgi
+/bin/s6-svc -u /etc/services.d/rsyslog
+/bin/s6-svwait -u /etc/services.d/rsyslog
+/bin/s6-svc -u /etc/services.d/nginx
+/bin/s6-svc -u /etc/services.d/postfix
+/bin/s6-svc -u /etc/services.d/sympa-msg
+/bin/s6-svwait -u /etc/services.d/sympa-msg
+/bin/s6-svc -u /etc/services.d/sympa-archive
+/bin/s6-svc -u /etc/services.d/sympa-bounce
+/bin/s6-svc -u /etc/services.d/sympa-bulk
+/bin/s6-svc -u /etc/services.d/sympa-task
+/bin/s6-svc -u /etc/services.d/sympa-fcgi
