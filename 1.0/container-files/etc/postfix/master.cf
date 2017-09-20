@@ -126,5 +126,5 @@ scache    unix  -       -       n       -       1       scache
 #  flags=FR user=list argv=/usr/lib/mailman/bin/postfix-to-mailman.py
 #  ${nexthop} ${user}
 #sympa defaults
-#sympa unix - n n - - pipe flags=R user=sympa argv=/home/sympa/bin/queue ${recipient}
-#sympabounce unix - n n - - pipe flags=R user=sympa argv=/home/sympa/bin/bouncequeue ${recipient}
+sympa unix - n n - - pipe flags=R user=sympa argv=/usr/libexec/sympa/queue ${recipient}
+sympabounce unix - n n - - pipe flags=R user=sympa argv=/usr/libexec/sympa/bouncequeue ${recipient}
