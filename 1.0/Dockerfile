@@ -25,3 +25,5 @@ RUN yum -y update  \
 RUN ln -s /usr/bin/perl /bin/perl
 
 ENTRYPOINT ["/init"]
+
+CMD ["/usr/sbin/startsympa"]

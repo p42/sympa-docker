@@ -1,0 +1,13 @@
+#!/bin/sh
+
+/bin/s6-svc -u rsyslog
+/bin/s6-svwait -u rsyslog
+/bin/s6-svc -u nginx
+/bin/s6-svc -u postfix
+/bin/s6-svc -u sympa-msg
+/bin/s6-svwait -u sympa-msg
+/bin/s6-svc -u sympa-archive
+/bin/s6-svc -u sympa-bounce
+/bin/s6-svc -u sympa-bulk
+/bin/s6-svc -u sympa-task
+/bin/s6-svc -u sympa-fcgi
