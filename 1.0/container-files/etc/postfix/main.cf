@@ -95,7 +95,7 @@ mydomain = SYMPA_DOMAIN
 # myorigin also specifies the default domain name that is appended
 # to recipient addresses that have no @domain part.
 #
-#myorigin = $myhostname
+myorigin = $myhostname
 #myorigin = $mydomain
 
 # RECEIVING MAIL
