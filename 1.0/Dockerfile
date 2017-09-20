@@ -24,6 +24,9 @@ RUN yum -y update  \
 
 RUN ln -s /usr/bin/perl /bin/perl
 
+RUN chmod +x /usr/sbin/presympa
+RUN chmod +x /usr/sbin/startsympa
+
 ENTRYPOINT ["/init"]
 
 CMD ["/usr/sbin/startsympa"]
