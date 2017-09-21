@@ -22,7 +22,7 @@ RUN yum -y update  \
  && yum -y install rsyslog \
  && yum -y clean all
 
-RUN ln -s /usr/bin/perl /bin/perl
+#RUN ln -s /usr/bin/perl /bin/perl
 
 RUN chmod +x /usr/sbin/presympa
 
