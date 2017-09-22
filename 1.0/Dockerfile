@@ -20,6 +20,7 @@ RUN yum -y update  \
  && yum -y install sympa-nginx \
  && yum -y install postfix cyrus-sasl cyrus-sasl-plain cyrus-sasl-md5 \
  && yum -y install rsyslog \
+ && yum -y erase ssmtp \
  && yum -y clean all
 
 #RUN ln -s /usr/bin/perl /bin/perl
