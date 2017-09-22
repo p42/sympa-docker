@@ -18,7 +18,7 @@ RUN yum -y update  \
  && yum -y install epel-release \
  && yum -y install sympa \
  && yum -y install sympa-nginx \
- && yum -y install postfix \
+ && yum -y install postfix cyrus-sasl cyrus-sasl-plain cyrus-sasl-md5 \
  && yum -y install rsyslog \
  && yum -y clean all
 
