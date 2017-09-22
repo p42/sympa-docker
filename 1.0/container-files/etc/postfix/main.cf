@@ -80,7 +80,7 @@ myhostname = SYMPA_DOMAIN
 # $mydomain is used as a default value for many other configuration
 # parameters.
 #
-mydomain = SYMPA_DOMAIN
+#mydomain = SYMPA_DOMAIN
 
 # SENDING MAIL
 #
@@ -95,7 +95,7 @@ mydomain = SYMPA_DOMAIN
 # myorigin also specifies the default domain name that is appended
 # to recipient addresses that have no @domain part.
 #
-myorigin = $myhostname
+#myorigin = $myhostname
 #myorigin = $mydomain
 
 # RECEIVING MAIL
@@ -218,7 +218,7 @@ mydestination = $myhostname, localhost.$mydomain, localhost
 # with 450 (try again later) until you are certain that your
 # local_recipient_maps settings are OK.
 #
-unknown_local_recipient_reject_code = 550
+#unknown_local_recipient_reject_code = 550
 
 # TRUST AND RELAY CONTROL
 
@@ -248,7 +248,7 @@ unknown_local_recipient_reject_code = 550
 #
 #mynetworks_style = class
 #mynetworks_style = subnet
-mynetworks_style = host
+#mynetworks_style = host
 
 # Alternatively, you can specify the mynetworks list by hand, in
 # which case Postfix ignores the mynetworks_style setting.
@@ -264,6 +264,7 @@ mynetworks_style = host
 #mynetworks = 168.100.189.0/28, 127.0.0.0/8
 #mynetworks = $config_directory/mynetworks
 #mynetworks = hash:/etc/postfix/network_table
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 
 # The relay_domains parameter restricts what destinations this system will
 # relay mail to.  See the smtpd_recipient_restrictions description in
@@ -293,7 +294,7 @@ mynetworks_style = host
 # list this system as their primary or backup MX host. See the
 # permit_mx_backup restriction description in postconf(5).
 #
-relay_domains = $mydestination
+#relay_domains = $mydestination
 
 # INTERNET OR INTRANET
 
@@ -329,6 +330,9 @@ relay_domains = $mydestination
 # a user@domain.tld address.
 #
 #relay_recipient_maps = hash:/etc/postfix/relay_recipients
+
+# SMTP Relay restrictions
+smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
 
 # INPUT RATE CONTROL
 #
@@ -569,7 +573,7 @@ alias_maps = hash:/etc/aliases,hash:/etc/sympa/aliases.sympa.postfix
 # You MUST specify $myhostname at the start of the text. That is an
 # RFC requirement. Postfix itself does not care.
 #
-#smtpd_banner = $myhostname ESMTP $mail_name
+smtpd_banner = $myhostname ESMTP $mail_name
 #smtpd_banner = $myhostname ESMTP $mail_name ($mail_version)
 
 # PARALLEL DELIVERY TO THE SAME DESTINATION
