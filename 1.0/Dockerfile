@@ -1,6 +1,11 @@
 FROM project42/s6-centos:centos7
 MAINTAINER Rance Hall rance_hall@icloud.com
 
+VOLUME /etc/sympa
+VOLUME /var/lib/sympa
+VOLUME /var/spool/postfix
+VOLUME /var/spool/sympa
+
 ENV SYMPA_DOMAIN=lists.mydomain.com
 ENV SYMPA_DB_TYPE=mysql
 ENV SYMPA_DB_HOST=localhost
