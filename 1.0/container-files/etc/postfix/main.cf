@@ -369,6 +369,8 @@ smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_una
 # TRANSPORT MAP
 #
 # See the discussion in the ADDRESS_REWRITING_README document.
+transport_map = regexp:/var/lib/sympa/transport_regexp
+
 
 # ALIAS DATABASE
 #
@@ -387,7 +389,7 @@ smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_una
 # "postfix reload" to eliminate the delay.
 #
 #alias_maps = dbm:/etc/aliases
-alias_maps = hash:/etc/aliases,hash:/etc/sympa/aliases.sympa.postfix
+alias_maps = hash:/etc/aliases,hash:/var/lib/sympa/sympa_aliases
 #alias_maps = hash:/etc/aliases, nis:mail.aliases
 #alias_maps = netinfo:/aliases
 
