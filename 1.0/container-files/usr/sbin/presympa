@@ -7,10 +7,12 @@
 
 if [ ! -e /etc/domain_aliases ]; then
   cat /etc/sympa/aliases.sympa.postfix > /var/lib/sympa/sympa_aliases
+  postalias /var/lib/sympa/sympa_aliases
+  postmap /var/lib/sympa/transport_regexp
   touch /etc/domain_aliases
 fi
 
-if [ ! -e /etc/domain_migrated ]; then
+#if [ ! -e /etc/domain_migrated ]; then
 
   #touch /etc/domain_migrated
-fi
+#fi
