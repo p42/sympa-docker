@@ -10,7 +10,7 @@ if [ "$SYMPA_DOMAIN" != "lists.mydomain.com" ]; then
 	sed -e "s/SYMPA_DOMAIN/$SYMPA_DOMAIN/g" /etc/nginx/nginx.conf > /etc/nginx/nginx.conf.new
   sed -e "s/SYMPA_DOMAIN/$SYMPA_DOMAIN/g" /etc/sympa/sympa.conf > /etc/sympa/sympa.conf.new
 	sed -e "s/SYMPA_DOMAIN/$SYMPA_DOMAIN/g" /etc/postfix/main.cf > /etc/postfix/main.cf.new
-	sed -d "s/my.domain.org/$SYMPA_DOMAIN/g" /etc/sympa/aliases.sympa.postfix > /etc/sympa/aliases.sympa.postfix.new
+	sed -e "s/my.domain.org/$SYMPA_DOMAIN/g" /etc/sympa/aliases.sympa.postfix > /etc/sympa/aliases.sympa.postfix.new
 	mv /etc/nginx/conf.d/sympa.conf.new /etc/nginx/conf.d/sympa.conf
   mv /etc/nginx/nginx.conf.new /etc/nginx/nginx.conf
 	mv /etc/sympa/sympa.conf.new /etc/sympa/sympa.conf
