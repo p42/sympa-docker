@@ -5,7 +5,12 @@
 
 #check for and create domain level sympa aliases and potentially run data import.
 
-if [ ! -e /etc/domain_aliases]; then
+if [ ! -e /etc/domain_aliases ]; then
   cat /etc/sympa/aliases.sympa.postfix > /var/lib/sympa/sympa_aliases
   touch /etc/domain_aliases
+fi
+
+if [ ! -e /etc/domain_migrated ]; then
+
+  #touch /etc/domain_migrated
 fi
