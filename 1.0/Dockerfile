@@ -1,11 +1,6 @@
 FROM project42/s6-centos:centos7
 MAINTAINER Rance Hall rance_hall@icloud.com
 
-VOLUME /etc/sympa
-VOLUME /var/lib/sympa
-VOLUME /var/spool/postfix
-VOLUME /var/spool/sympa
-
 ENV SYMPA_DOMAIN=lists.mydomain.com
 ENV SYMPA_DB_TYPE=mysql
 ENV SYMPA_DB_HOST=localhost
@@ -21,15 +16,30 @@ COPY container-files /
 RUN yum -y update  \
  && yum -y install less nano which telnet mailx \
  && yum -y install epel-release \
- && yum -y install sympa \
- && yum -y install sympa-nginx \
- && yum -y install postfix cyrus-sasl cyrus-sasl-plain cyrus-sasl-md5 \
- && yum -y install rsyslog \
- && yum -y erase ssmtp \
+ && yum -y install sympa sympa-nginx \
+ && yum -y install postfix \
+ && yum -y install rsyslog rsync \
+ && rpm -e --nodeps ssmtp \
  && yum -y clean all
 
 #RUN ln -s /usr/bin/perl /bin/perl
 
 RUN chmod +x /usr/sbin/presympa
+
+# address data persistence needs for files in:
+#/etc/sympa
+#/var/lib/sympa
+#/var/spool/postfix
+#/var/spool/sympa  #/var/spool/sympa not created by rpm package.  Created on first run of sympa.
+
+
+RUN mkdir -p /keep/sympaetc \
+&& mkdir -p /keep/sympalib \
+&& mkdir -p /keep/postfixspool \
+&& rsync -a -r /etc/sympa/ /keep/sympaetc/ \
+&& rsync -a -r /var/lib/sympa/ /keep/sympalib/ \
+&& rsync -a -r /var/spool/postfix/ /keep/postfixspool/
+
+
 
 ENTRYPOINT ["/init"]

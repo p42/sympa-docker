@@ -1,6 +1,28 @@
 #!/usr/bin/with-contenv /bin/bash
 
 set -e
+#copy staging area files into permanant locations
+
+# fix permissions on volume mounts
+chmod -R 777 /etc/sympa
+chmod -R 777 /var/lib/sympa
+chmod -R 777 /var/spool/sympa
+chmod -R 777 /var/spool/postfix
+
+if [ ! -e /etc/sympa/staged_files ]; then
+  rsync -a -r /keep/sympaetc/ /etc/sympa/
+  touch /etc/sympa/staged_files
+fi
+
+if [ ! -e /var/lib/sympa/staged_files ]; then
+  rsync -a -r /keep/sympalib/ /var/lib/sympa/
+  touch /var/lib/sympa/staged_files
+fi
+
+if [ ! -e /var/spool/postfix/staged_files ]; then
+  rsync -a -r /keep/postfixspool/ /var/spool/postfix/
+  touch /var/spool/postfix/staged_files
+fi
 
 #Apply environment variables to config files where needed.
 
@@ -54,6 +76,7 @@ if [ "$SYMPA_REMOTE_LOG_SERVER" != "logger.mydomain.com" ]; then
 	mv /etc/rsyslog.conf.new /etc/rsyslog.conf
 fi
 
-chmod +x /usr/sbin/presympa
 
 # Configuration complete
+
+# test to see if migration is needed and migrate data if needed
