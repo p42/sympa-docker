@@ -31,7 +31,7 @@ test-master:
 
 test:
   tags:
-    -docker
+    - docker
   stage: test
   script:
     - docker run --rm "${IMAGE_NAME}:${IMAGE_TAG}" /ci_tests/run_tests
@@ -40,7 +40,7 @@ test:
 
 build:
   tags:
-    -docker
+    - docker
   stage: build
   script:
     - docker build --pull -t "${IMAGE_NAME}:${IMAGE_TAG}" .
