@@ -12,6 +12,8 @@ before_script:
   - docker info
 
 build-master:
+  tags:
+    - docker
   stage: build
   script:
     - docker build --pull -t "${IMAGE_NAME}:${IMAGE_TAG}" .
@@ -19,6 +21,8 @@ build-master:
     - master
 
 test-master:
+  tags:
+    - docker
   stage: test
   script:
     - docker run --rm "${IMAGE_NAME}:${IMAGE_TAG}" /ci_tests/run_tests
@@ -26,6 +30,8 @@ test-master:
     - master
 
 test:
+  tags:
+    -docker
   stage: test
   script:
     - docker run --rm "${IMAGE_NAME}:${IMAGE_TAG}" /ci_tests/run_tests
@@ -33,6 +39,8 @@ test:
     - master
 
 build:
+  tags:
+    -docker
   stage: build
   script:
     - docker build --pull -t "${IMAGE_NAME}:${IMAGE_TAG}" .
