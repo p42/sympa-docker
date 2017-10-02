@@ -6,7 +6,7 @@ stages:
 variables:
   IMAGE_NAME: "centos-sympa-docker"
   IMAGE_TAG: "latest"
-  GITHUB_PROJECT: "p42/centos-sympa-docker.git"
+  GITHUB_PROJECT: "p42/centos_sympa_docker.git"
 
 before_script:
   - docker info
