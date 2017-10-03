@@ -15,11 +15,10 @@ services:
     environment:
       - SYMPA_DOMAIN=lists.hallhome.private
       - SYMPA_LISTMASTERS=rance.hall@esu10.org
-      - SYMPA_DB_HOST=services.hallhome.private
       - SYMPA_POSTFIX_RELAY=services.hallhome.private
       - SYMPA_REMOTE_LOG_SERVER=logger.mydomain.com
       - SYMPA_DB_TYPE=mysql
-      - SYMPA_DB_HOST=localhost
+      - SYMPA_DB_HOST=services.hallhome.private
       - SYMPA_DB_USER=sympa
       - SYMPA_DB_PASS=sympa
       - SYMPA_DB_NAME=sympa
