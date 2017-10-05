@@ -72,7 +72,7 @@ if [ "$SYMPA_POSTFIX_RELAY" != "mail.mydomain.com" ]; then
 fi
 
 if [ "$SYMPA_REMOTE_LOG_SERVER" != "logger.mydomain.com" ]; then
-	sed -e "s/#*.* @@remote-host:514/*.* @@$SYMPA_REMOTE_LOG_SERVER/g" /etc/rsyslog.conf > /etc/rsyslog.conf.new
+	sed -e "s/#*.* @remote-host:514/*.* @$SYMPA_REMOTE_LOG_SERVER/g" /etc/rsyslog.conf > /etc/rsyslog.conf.new
 	mv /etc/rsyslog.conf.new /etc/rsyslog.conf
 fi
 
