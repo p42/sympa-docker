@@ -16,7 +16,7 @@ build-master:
     - docker
   stage: build
   script:
-    - docker build -t "${IMAGE_NAME}:${IMAGE_TAG}" .
+    - docker build -t --pull "${IMAGE_NAME}:${IMAGE_TAG}" .
   only:
     - master
 
@@ -25,7 +25,7 @@ test-master:
     - docker
   stage: test
   script:
-    - docker run --rm --pull "${IMAGE_NAME}:${IMAGE_TAG}" /ci_tests/run_tests
+    - docker run --rm "${IMAGE_NAME}:${IMAGE_TAG}" /ci_tests/run_tests
   only:
     - master
 
