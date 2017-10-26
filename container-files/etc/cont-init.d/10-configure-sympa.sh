@@ -71,12 +71,6 @@ if [ "$SYMPA_POSTFIX_RELAY" != "mail.mydomain.com" ]; then
 	mv /etc/postfix/main.cf.new /etc/postfix/main.cf
 fi
 
-if [ "$SYMPA_REMOTE_LOG_SERVER" != "logger.mydomain.com" ]; then
-	sed -e "s/#*.* @remote-host:514/*.* @$SYMPA_REMOTE_LOG_SERVER/g" /etc/rsyslog.conf > /etc/rsyslog.conf.new
-	mv /etc/rsyslog.conf.new /etc/rsyslog.conf
-fi
-
-
 # Configuration complete
 
 # test to see if migration is needed and migrate data if needed
