@@ -4,8 +4,8 @@ stages:
   - deploy
 
 variables:
-  IMAGE_NAME: "centos-sympa-docker"
-  GITHUB_PROJECT: "p42/centos-sympa-docker.git"
+  IMAGE_NAME: "sympa-docker"
+  GITHUB_PROJECT: "p42/sympa-docker.git"
 
 before_script:
   - docker info
