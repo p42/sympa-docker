@@ -29,4 +29,4 @@ docker run -p 80:80 -p 25:25 -e SYMPA_DOMAIN=lists.mydomain.com \
 -e SYMPA_DB_TYPE=mysql -e SYMPA_DB_HOST=localhost -e SYMPA_DB_USER=sympa \
 -e SYMPA_DB_PASS=sympa -e SYMPA_DB_NAME=sympa -v datasource1:/etc/sympa \
 -v datasource2:/var/lib/sympa -v datasource3:/var/spool/postfix \
--v datasource4:/var/spool/sympa
+-v datasource4:/var/spool/sympa project42/sympa
