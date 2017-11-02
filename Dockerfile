@@ -15,7 +15,7 @@ COPY container-files /
 RUN yum -y update  \
  && yum -y install telnet mailx \
  && yum -y install epel-release \
- && yum -y install sympa-6.2.20-1.20170923.RHEL7.x86_64 sympa-nginx-6.2.20-1.20170923.RHEL7.x86_64 \
+ && yum -y install sympa sympa-nginx \
  && yum -y install postfix rsync \
  && rpm -e --nodeps ssmtp \
  && yum -y clean all
