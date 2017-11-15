@@ -9,18 +9,31 @@ chmod -R 777 /var/lib/sympa
 chmod -R 777 /var/spool/sympa
 chmod -R 777 /var/spool/postfix
 
+if [ -e /etc/sympa/staged_files ]; then
+  SYMPA_VERSION=$(/usr/bin/perl /usr/sbin/sympa.pl -v | cut -d ' ' -f 2)
+  OLD_SYMPA_VERSION=$(cat /etc/sympa/staged_files)
+
+  if [ $SYMPA_VERSION != $OLD_SYMPA_VERSION ]; then
+    rm /etc/sympa/staged_files
+    rm /var/lib/sympa/staged_files
+    #rm /var/spool/postfix/staged_files
+  fi
+  
+fi
+
 if [ ! -e /etc/sympa/staged_files ]; then
-  rsync -a -r /keep/sympaetc/ /etc/sympa/
-  touch /etc/sympa/staged_files
+  rsync -a /keep/sympaetc/ /etc/sympa/
+  echo $SYMPA_VERSION > /etc/sympa/staged_files
 fi
 
 if [ ! -e /var/lib/sympa/staged_files ]; then
-  rsync -a -r /keep/sympalib/ /var/lib/sympa/
-  touch /var/lib/sympa/staged_files
+  rsync -a /keep/sympalib/ /var/lib/sympa/
+  echo $SYMPA_VERSION > /var/lib/sympa/staged_files
 fi
 
+
 if [ ! -e /var/spool/postfix/staged_files ]; then
-  rsync -a -r /keep/postfixspool/ /var/spool/postfix/
+  rsync -a /keep/postfixspool/ /var/spool/postfix/
   touch /var/spool/postfix/staged_files
 fi
 
