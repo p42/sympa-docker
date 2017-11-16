@@ -38,8 +38,8 @@ RUN mkdir -p /keep/sympaetc \
 && rsync -a -r /var/lib/sympa/ /keep/sympalib/ \
 && rsync -a -r /var/spool/postfix/ /keep/postfixspool/
 
-RUN rm /keep/sympalib/sympa_aliases &&
-rm /keep/sympalib/transport_regexp
+RUN mv /keep/sympalib/sympa_aliases /keep/sympalib/sympa_aliases.default &&
+mv /keep/sympalib/transport_regexp /keep/sympalib/transport_regexp.default
 
 
 
