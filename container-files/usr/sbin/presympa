@@ -8,7 +8,8 @@
 if [ ! -e /etc/sympa/domain_aliases ]; then
   cat /etc/sympa/aliases.sympa.postfix > /var/lib/sympa/sympa_aliases
   postalias /var/lib/sympa/sympa_aliases
-  postalias /etc/aliases 
+  postalias /etc/aliases
+  mv /keep/sympalib/transport_regexp.new /var/lib/sympa/transport_regexp
   postmap /var/lib/sympa/transport_regexp
   touch /etc/sympa/domain_aliases
 fi
