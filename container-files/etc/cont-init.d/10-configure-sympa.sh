@@ -18,7 +18,7 @@ if [ -e /etc/sympa/staged_files ]; then
     rm /var/lib/sympa/staged_files
     #rm /var/spool/postfix/staged_files
   fi
-  
+
 fi
 
 if [ ! -e /etc/sympa/staged_files ]; then
@@ -46,6 +46,7 @@ if [ "$SYMPA_DOMAIN" != "lists.mydomain.com" ]; then
   sed -e "s/SYMPA_DOMAIN/$SYMPA_DOMAIN/g" /etc/sympa/sympa.conf > /etc/sympa/sympa.conf.new
 	sed -e "s/SYMPA_DOMAIN/$SYMPA_DOMAIN/g" /etc/postfix/main.cf > /etc/postfix/main.cf.new
 	sed -e "s/my.domain.org/$SYMPA_DOMAIN/g" /etc/sympa/aliases.sympa.postfix > /etc/sympa/aliases.sympa.postfix.new
+  sed -e "s/lists.mydomain.tld/$SYMPA_DOMAIN/g" /keep/sympalib/transport_regexp.default > /keep/sympalib/transport_regexp.new
 	mv /etc/nginx/conf.d/sympa.conf.new /etc/nginx/conf.d/sympa.conf
   mv /etc/nginx/nginx.conf.new /etc/nginx/nginx.conf
 	mv /etc/sympa/sympa.conf.new /etc/sympa/sympa.conf
