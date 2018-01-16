@@ -13,7 +13,7 @@ if [ -e /etc/sympa/staged_files ]; then
   SYMPA_VERSION=$(/usr/bin/perl /usr/sbin/sympa.pl -v | cut -d ' ' -f 2)
   OLD_SYMPA_VERSION=$(cat /etc/sympa/staged_files)
 
-  if [ $SYMPA_VERSION != $OLD_SYMPA_VERSION ]; then
+  if [ "$SYMPA_VERSION" != "$OLD_SYMPA_VERSION" ]; then
     rm /etc/sympa/staged_files
     rm /var/lib/sympa/staged_files
     #rm /var/spool/postfix/staged_files
