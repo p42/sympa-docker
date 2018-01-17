@@ -3,11 +3,21 @@
 set -e
 #copy staging area files into permanant locations
 
-# fix permissions on volume mounts
-chmod -R 777 /etc/sympa
-chmod -R 777 /var/lib/sympa
-chmod -R 777 /var/spool/sympa
-chmod -R 777 /var/spool/postfix
+# create and fix permissions on volume mounts
+
+if [ ! -e /sympa_perm/sympaetc ]; then
+  mkdir -p /sympa_perm/sympaetc
+  mkdir -p /sympa_perm/sympalib
+  mkdir -p /sympa_perm/sympaspool
+  mkdir -p /sympa_perm/postfixspool
+  chmod -R 777 /sympa_perm
+fi
+
+# bind mount subdirs of volume into appropriate places.
+mount --bind /sympa_perm/sympaetc /etc/sympa
+mount --bind /sympa_perm/sympalib /var/lib/sympa
+mount --bind /sympa_perm/sympaspool /var/spool/sympa
+mount --bind /sympa_perm/postfixspool /var/spool/postfix
 
 if [ -e /etc/sympa/staged_files ]; then
   SYMPA_VERSION=$(/usr/bin/perl /usr/sbin/sympa.pl -v | cut -d ' ' -f 2)
@@ -30,7 +40,6 @@ if [ ! -e /var/lib/sympa/staged_files ]; then
   rsync -a /keep/sympalib/ /var/lib/sympa/
   echo $SYMPA_VERSION > /var/lib/sympa/staged_files
 fi
-
 
 if [ ! -e /var/spool/postfix/staged_files ]; then
   rsync -a /keep/postfixspool/ /var/spool/postfix/
@@ -86,5 +95,3 @@ if [ "$SYMPA_POSTFIX_RELAY" != "mail.mydomain.com" ]; then
 fi
 
 # Configuration complete
-
-# test to see if migration is needed and migrate data if needed

@@ -21,6 +21,8 @@ RUN yum -y update  \
  && yum -y clean all
 
 #RUN ln -s /usr/bin/perl /bin/perl
+#The above line fixes a perl install bug that occasionally misses creating
+# a required symlink
 
 RUN chmod +x /usr/sbin/presympa
 
@@ -28,12 +30,15 @@ RUN chmod +x /usr/sbin/presympa
 #/etc/sympa
 #/var/lib/sympa
 #/var/spool/postfix
-#/var/spool/sympa  #/var/spool/sympa not created by rpm package.  Created on first run of sympa.
+#/var/spool/sympa  #/var/spool/sympa not created by rpm package.
+# Created on first run of sympa.
 
 
 RUN mkdir -p /keep/sympaetc \
 && mkdir -p /keep/sympalib \
 && mkdir -p /keep/postfixspool \
+&& mkdir -p /sympa_perm \
+&& mkdir -p /var/spool/sympa \
 && rsync -a -r /etc/sympa/ /keep/sympaetc/ \
 && rsync -a -r /var/lib/sympa/ /keep/sympalib/ \
 && rsync -a -r /var/spool/postfix/ /keep/postfixspool/

@@ -7,11 +7,8 @@ services:
        - 80:80
        - 25:25
     volumes:
-      - ~/sympadata/sympaspool:/var/spool/sympa
-      - ~/sympadata/postfixspool:/var/spool/postfix
-      - ~/sympadata/sympaetc:/etc/sympa
-      - ~/sympadata/sympalib:/var/lib/sympa
-    restart: always
+      - ~/sympadata:/sympa_perm
+    restart: never
     environment:
       - SYMPA_DOMAIN=lists.hallhome.private
       - SYMPA_LISTMASTERS=rance.hall@esu10.org
