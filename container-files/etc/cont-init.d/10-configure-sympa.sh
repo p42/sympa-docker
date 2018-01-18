@@ -13,11 +13,16 @@ if [ ! -e /sympa_perm/sympaetc ]; then
   chmod -R 777 /sympa_perm
 fi
 
-# bind mount subdirs of volume into appropriate places.
-mount --bind /sympa_perm/sympaetc /etc/sympa
-mount --bind /sympa_perm/sympalib /var/lib/sympa
-mount --bind /sympa_perm/sympaspool /var/spool/sympa
-mount --bind /sympa_perm/postfixspool /var/spool/postfix
+# create symlinks of subdirs of volume into appropriate places.
+if [ -d /etc/sympa ]; then
+  rm -r -f /etc/sympa
+  rm -r -f /var/lib/sympa
+  rm -r -f /var/spool/postfix
+  ln -s /sympa_perm/sympaetc /etc/sympa
+  ln -s /sympa_perm/sympalib /var/lib/sympa
+  ln -s /sympa_perm/sympaspool /var/spool/sympa
+  ln -s /sympa_perm/postfixspool /var/spool/postfix
+fi
 
 if [ -e /etc/sympa/staged_files ]; then
   SYMPA_VERSION=$(/usr/bin/perl /usr/sbin/sympa.pl -v | cut -d ' ' -f 2)
