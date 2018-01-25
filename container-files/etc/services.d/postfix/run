@@ -1,2 +1,3 @@
 #!/bin/execlineb -P
+s6-svwait -t 5000 -U /var/run/s6/services/syslog-ng
 /usr/libexec/postfix/master -c /etc/postfix -d
