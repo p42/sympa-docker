@@ -3,4 +3,5 @@
 while [ ! -e /dev/log ]
 do
     sleep 5
+    echo "waiting for syslog ng to start"
 done
