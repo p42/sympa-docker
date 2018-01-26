@@ -1,3 +1,4 @@
 #!/bin/execlineb -P
-s6-svwait -t 5000 -u /var/run/s6/services/sympa
-/usr/bin/spawn-fcgi -n -F 5 -P /var/run/sympa/wwsympa.pid -u sympa -g sympa -s /var/run/sympa/wwsympa.socket -M 0600 -U nginx -- /usr/libexec/sympa/wwsympa.fcgi
+
+# s6-svwait -t 5000 -u /var/run/s6/services/sympa
+foreground { sleep 15 } /usr/bin/spawn-fcgi -n -F 5 -P /var/run/sympa/wwsympa.pid -u sympa -g sympa -s /var/run/sympa/wwsympa.socket -M 0600 -U nginx -- /usr/libexec/sympa/wwsympa.fcgi
