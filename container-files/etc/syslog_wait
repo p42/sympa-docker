@@ -1,0 +1,6 @@
+#!/bin/sh
+
+while [ ! -e /dev/log ]
+do
+    sleep 5
+done
