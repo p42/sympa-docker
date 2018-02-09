@@ -28,4 +28,4 @@ sample run command looks like:
 docker run -p 80:80 -p 25:25 -e SYMPA_DOMAIN=lists.mydomain.com \
 -e SYMPA_DB_TYPE=mysql -e SYMPA_DB_HOST=localhost -e SYMPA_DB_USER=sympa \
 -e SYMPA_DB_PASS=sympa -e SYMPA_DB_NAME=sympa -e SYMPA_LISTMASTERS=csv_list_of_emails \
--v datasource:/sympa_perm project42/sympa
+-e SYMPA_POSTFIX_RELAY=mail.mydomain.com -v datasource:/sympa_perm project42/sympa
