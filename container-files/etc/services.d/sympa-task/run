@@ -1,3 +1,3 @@
 #!/bin/execlineb -P
-s6-svwait -t 5000 -U /var/run/s6/services/sympa
-/usr/sbin/task_manager.pl --foreground
+# s6-svwait -t 5000 -u /var/run/s6/services/sympa
+foreground { /etc/process_wait /var/run/sympa/sympa_msg.pid } /usr/sbin/task_manager.pl --foreground
