@@ -15,12 +15,13 @@ COPY container-files /
 RUN yum -y update  \
  && yum -y install telnet mailx \
  && yum -y install epel-release \
- && rpm --import http://mirror.ghettoforge.org/distributions/gf/RPM-GPG-KEY-gf.el7 \
- && rpm -Uvh http://mirror.ghettoforge.org/distributions/gf/gf-release-latest.gf.el7.noarch.rpm \
- && yum-config-manager --setopt=gf-plus.includepkgs=postfix3* --save \
- && yum-config-manager --enable gf-plus \
+ #&& rpm --import http://mirror.ghettoforge.org/distributions/gf/RPM-GPG-KEY-gf.el7 \
+ #&& rpm -Uvh http://mirror.ghettoforge.org/distributions/gf/gf-release-latest.gf.el7.noarch.rpm \
+ #&& yum-config-manager --setopt=gf-plus.includepkgs=postfix3* --save \
+ #&& yum-config-manager --enable gf-plus \
  && yum -y install sympa sympa-nginx \
- && yum -y install postfix3 rsync \
+ && yum -y install rsync \
+ && yum -y install postfix \
  && rpm -e --nodeps ssmtp \
  && yum -y clean all
 
