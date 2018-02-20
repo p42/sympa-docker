@@ -11,7 +11,6 @@ if [ ! -e /sympa_perm/sympaetc ]; then
   mkdir -p /sympa_perm/sympaspool
   mkdir -p /sympa_perm/postfixspool
   usermod -aG sympa postfix
-  usermod -aG posfix sympa
 fi
 
 # create symlinks of subdirs of volume into appropriate places.
