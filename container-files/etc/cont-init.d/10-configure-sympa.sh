@@ -10,8 +10,9 @@ if [ ! -e /sympa_perm/sympaetc ]; then
   mkdir -p /sympa_perm/sympalib
   mkdir -p /sympa_perm/sympaspool
   mkdir -p /sympa_perm/postfixspool
-  chmod -R 777 /sympa_perm
-  chown -R sympa sympa_perm
+  chown -R sympa:sympa /sympa_perm/sympalib
+  chmod -aG sympa postfix
+  chmod -aG posfix sympa
 fi
 
 # create symlinks of subdirs of volume into appropriate places.
