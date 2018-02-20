@@ -23,9 +23,18 @@ The following internal container directories expect persistence:
 /var/spool/postfix
 /var/spool/sympa
 
+This is accomplised by mounting a single volume into a fixed
+directory inside the container.  Then on the mounted volume four
+subdirectorys are created and then the original locations are symlinked
+to their persistent locations.
+
 sample run command looks like:
 
 docker run -p 80:80 -p 25:25 -e SYMPA_DOMAIN=lists.mydomain.com \
 -e SYMPA_DB_TYPE=mysql -e SYMPA_DB_HOST=localhost -e SYMPA_DB_USER=sympa \
 -e SYMPA_DB_PASS=sympa -e SYMPA_DB_NAME=sympa -e SYMPA_LISTMASTERS=csv_list_of_emails \
 -e SYMPA_POSTFIX_RELAY=mail.mydomain.com -v datasource:/sympa_perm project42/sympa
+
+NOTE: You can omit the SYMPA_POSTFIX_RELAY environment variable to have the sympa
+container drop mail directly to the internet.  NO provision is made for DKIM or any other
+mail security feature.
