@@ -10,7 +10,6 @@ if [ ! -e /sympa_perm/sympaetc ]; then
   mkdir -p /sympa_perm/sympalib
   mkdir -p /sympa_perm/sympaspool
   mkdir -p /sympa_perm/postfixspool
-  chown -R sympa:sympa /sympa_perm/sympalib
   chmod -aG sympa postfix
   chmod -aG posfix sympa
 fi
@@ -100,5 +99,8 @@ if [ "$SYMPA_POSTFIX_RELAY" != "mail.mydomain.com" ]; then
 	sed -e "s/#relayhost = SYMPA_POSTFIX_RELAY/relayhost = $SYMPA_POSTFIX_RELAY/g" /etc/postfix/main.cf > /etc/postfix/main.cf.new
 	mv /etc/postfix/main.cf.new /etc/postfix/main.cf
 fi
+
+#Just to be safe, these files need to be writable by postfix.
+chown -R sympa:sympa /sympa_perm/sympalib
 
 # Configuration complete
