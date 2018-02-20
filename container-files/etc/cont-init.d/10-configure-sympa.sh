@@ -32,7 +32,6 @@ if [ -e /etc/sympa/staged_files ]; then
   if [ "$SYMPA_VERSION" != "$OLD_SYMPA_VERSION" ]; then
     rm /etc/sympa/staged_files
     rm /var/lib/sympa/staged_files
-    #rm /var/spool/postfix/staged_files
   fi
 
 fi
