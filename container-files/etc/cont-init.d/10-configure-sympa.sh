@@ -101,4 +101,8 @@ fi
 #Just to be safe, these files need to be writable by postfix.
 chown -R sympa:sympa /sympa_perm/sympalib
 
+# fix the list_aliases.tt2 template files
+sed -e "s/#\[/\[/g" /usr/share/sympa/default/list_aliases.tt2 > /usr/share/sympa/default/list_aliases.tt2.new
+mv /usr/share/sympa/default/list_aliases.tt2.new /usr/share/sympa/default/list_aliases.tt2
+
 # Configuration complete
