@@ -18,6 +18,9 @@ if [ -d /etc/sympa ]; then
   rm -r -f /etc/sympa
   rm -r -f /var/lib/sympa
   rm -r -f /var/spool/postfix
+  if [ -d /var/spool/sympa ]; then
+    rm -rf /var/spool/sympa
+  fi
   ln -s /sympa_perm/sympaetc /etc/sympa
   ln -s /sympa_perm/sympalib /var/lib/sympa
   ln -s /sympa_perm/sympaspool /var/spool/sympa
@@ -100,6 +103,7 @@ fi
 
 #Just to be safe, these files need to be writable by postfix.
 chown -R sympa:sympa /sympa_perm/sympalib
+chown -R sympa:sympa /sympa_perm/sympaspool
 
 # fix the list_aliases.tt2 template files
 sed -e "s/#\[/\[/g" /usr/share/sympa/default/list_aliases.tt2 > /usr/share/sympa/default/list_aliases.tt2.new
