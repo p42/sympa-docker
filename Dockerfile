@@ -9,11 +9,14 @@ ENV SYMPA_DB_PASS=sympa
 ENV SYMPA_DB_NAME=sympa
 ENV SYMPA_LISTMASTERS=myadmin@mydomain.com
 ENV SYMPA_POSTFIX_RELAY=mail.mydomain.com
+ENV SYMPA_RUN_SPECIAL=FALSE
+ENV SYMPA_RUN_URL=NONE
+ENV SYMPA_RUN_NAME=NONE
 
 COPY container-files /
 
 RUN yum -y update  \
- && yum -y install telnet mailx \
+ && yum -y install wget\
  && yum -y install epel-release \
  #&& rpm --import http://mirror.ghettoforge.org/distributions/gf/RPM-GPG-KEY-gf.el7 \
  #&& rpm -Uvh http://mirror.ghettoforge.org/distributions/gf/gf-release-latest.gf.el7.noarch.rpm \
@@ -36,14 +39,12 @@ RUN chmod +x /usr/sbin/presympa
 #/var/lib/sympa
 #/var/spool/postfix
 #/var/spool/sympa  #/var/spool/sympa not created by rpm package.
-# Created on first run of sympa.
 
 
 RUN mkdir -p /keep/sympaetc \
 && mkdir -p /keep/sympalib \
 && mkdir -p /keep/postfixspool \
-&& mkdir -p /sympa_perm \
-&& mkdir -p /var/spool/sympa \
+&& mkdir -p /sympa_perm/sympaspool \
 && rsync -a -r /etc/sympa/ /keep/sympaetc/ \
 && rsync -a -r /var/lib/sympa/ /keep/sympalib/ \
 && rsync -a -r /var/spool/postfix/ /keep/postfixspool/

@@ -17,6 +17,17 @@ SYMPA_DB_NAME=sympa
 SYMPA_LISTMASTERS=myadmin@mydomain.com
 SYMPA_POSTFIX_RELAY=mail.mydomain.com
 
+OPTIONAL environment variables and their defaults:
+SYMPA_RUN_SPECIAL=FALSE (You'll need to set this to TRUE yourself)
+SYMPA_RUN_NAME=NONE (to use this it should be a URL without the /filename at the end.)
+SYMPA_RUN_URL=NONE (this is the filename that should be called.)
+
+There is a script that runs as part of the container setup
+that looks for these variables and tries to include the requested
+file and run it as a script.  To use this feature change
+SYMPA_RUN_SPECIAL to TRUE, and add the URL and file name to their
+respective variables
+
 The following internal container directories expect persistence:
 /etc/sympa
 /var/lib/sympa
