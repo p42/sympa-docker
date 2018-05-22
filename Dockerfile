@@ -15,13 +15,9 @@ ENV SYMPA_RUN_NAME=NONE
 
 COPY container-files /
 
-RUN yum -y update  \
- && yum -y install wget\
+RUN yum -y update \
+ && yum -y install wget \
  && yum -y install epel-release \
- #&& rpm --import http://mirror.ghettoforge.org/distributions/gf/RPM-GPG-KEY-gf.el7 \
- #&& rpm -Uvh http://mirror.ghettoforge.org/distributions/gf/gf-release-latest.gf.el7.noarch.rpm \
- #&& yum-config-manager --setopt=gf-plus.includepkgs=postfix3* --save \
- #&& yum-config-manager --enable gf-plus \
  && yum -y install sympa sympa-nginx \
  && yum -y install rsync \
  && yum -y install postfix \
