@@ -49,3 +49,5 @@ docker run -p 80:80 -p 25:25 -e SYMPA_DOMAIN=lists.mydomain.com \
 NOTE: You can omit the SYMPA_POSTFIX_RELAY environment variable to have the sympa
 container drop mail directly to the internet.  NO provision is made for DKIM or any other
 mail security feature.
+
+A couple lines added by Brandon as a test.
