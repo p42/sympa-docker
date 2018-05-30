@@ -19,8 +19,8 @@ SYMPA_POSTFIX_RELAY=mail.mydomain.com
 
 OPTIONAL environment variables and their defaults:
 SYMPA_RUN_SPECIAL=FALSE (You'll need to set this to TRUE yourself)
-SYMPA_RUN_NAME=NONE (to use this it should be a URL without the /filename at the end.)
-SYMPA_RUN_URL=NONE (this is the filename that should be called.)
+SYMPA_RUN_NAME=NONE ( The filename of the script to run.)
+SYMPA_RUN_URL=NONE ( The url to the script file.)
 
 There is a script that runs as part of the container setup
 that looks for these variables and tries to include the requested
