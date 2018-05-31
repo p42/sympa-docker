@@ -2,7 +2,7 @@
 
 # check to see if we are supposed to run.
 
-if [ "$SYMPA_RUN_SPECIAL" = "TRUE" ]; then
+if [ "$SYMPA_RUN_SPECIAL" == "TRUE" ]; then
 
   # make sure the remote url of the script is defined and a file name for the script is defined
 
