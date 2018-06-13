@@ -21,7 +21,7 @@ RUN yum -y update \
  && yum -y install sympa sympa-nginx \
  && yum -y install rsync \
  && yum -y install postfix \
- && yum -y install mysql
+ && yum -y install mariadb \
  && rpm -e --nodeps ssmtp \
  && yum -y clean all
 
